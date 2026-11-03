@@ -1,0 +1,19 @@
+void setup() {
+    Serial.begin(9600);
+    Serial.println("Start");
+}
+
+int buttonState = 0;
+int previousButtonState = 0;
+
+void loop() {    
+    buttonState = (analogRead(A0) < 5) ? LOW : HIGH;
+
+    if (buttonState == HIGH && previousButtonState == LOW) {
+        Serial.println("button press");
+    }
+
+    previousButtonState = buttonState;   
+
+    delay(50);
+}
